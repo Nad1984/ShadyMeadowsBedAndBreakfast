@@ -35,7 +35,7 @@ class ShadyMeadowsPageObject:
         self.__web_driver.get("https://automationintesting.online/")
         return self
 
-    def get_picture_element(self):
+    def get_logo_picture_element(self):
         return self.__wait.until(EC.presence_of_element_located(
             (BasePageLocators.HOTEL_LOGO_URL.by,
              BasePageLocators.HOTEL_LOGO_URL.locator)))
