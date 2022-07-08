@@ -23,3 +23,4 @@ class TestShadyMeadows:
             f"Location of the picture is not matching with expected x = {expected_location_x}, " \
             f"y = {expected_location_y}"
 
+
