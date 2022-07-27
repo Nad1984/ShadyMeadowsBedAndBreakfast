@@ -4,6 +4,7 @@ from locators.base_locators import BaseLocators
 
 
 class BasePageLocators(BaseLocators):
+    LET_ME_HACK_BUTTON = (By.CSS_SELECTOR, 'button.btn.btn-primary')
     HOTEL_LOGO_URL = (By.CLASS_NAME, 'hotel-logoUrl')
     BOOK_THIS_ROOM_BUTTON = (By.CSS_SELECTOR, 'button.btn.btn-outline-primary.float-right.openBooking')
     ORDER_ROOM_TAB = (By.CSS_SELECTOR, 'div.row.hotel-room-info')
