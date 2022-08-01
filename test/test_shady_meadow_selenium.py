@@ -13,7 +13,7 @@ class TestShadyMeadows:
     @epic("NN-84")
     @feature("Logo picture")
     @story("AB-123")
-    @testcase("https://testrail.sometest.com/one", name="Test ID 000")
+    @testcase("https://testrail.sometest.com/case-000", name="Test ID 000")
     @severity(allure.severity_level.CRITICAL)
     @pytest.mark.logo_picture
     @pytest.mark.shady_meadow_ui
@@ -44,7 +44,7 @@ class TestShadyMeadows:
     @epic("NN-84")
     @feature("Booking the room")
     @story("AB-123")
-    @testcase("https://testrail.sometest.com/one", "Test ID 002")
+    @testcase("https://testrail.sometest.com/case-002", "Test ID 002")
     @severity(allure.severity_level.CRITICAL)
     @pytest.mark.booking_the_room
     @pytest.mark.shady_meadow_ui
@@ -65,7 +65,7 @@ class TestShadyMeadows:
     @epic("NN-84")
     @feature("Booking the room")
     @story("AB-123")
-    @testcase("https://testrail.sometest.com/one", "Test ID 004")
+    @testcase("https://testrail.sometest.com/case-004", "Test ID 004")
     @severity(allure.severity_level.CRITICAL)
     @pytest.mark.booking_the_room
     @pytest.mark.shady_meadow_ui
@@ -96,14 +96,14 @@ class TestShadyMeadows:
     @epic("NN-84")
     @feature("Contact block")
     @story("AB-124")
-    @testcase("https://testrail.sometest.com/one", "Test ID 006")
+    @testcase("https://testrail.sometest.com/case-006", "Test ID 006")
     @severity(allure.severity_level.CRITICAL)
     @pytest.mark.contact_block
     @pytest.mark.shady_meadow_ui
     def test_contact_block_visibility_if_book_this_room_button_was_clicked(self,
                                                                            shady_meadow_page: ShadyMeadowsPageObject):
         shady_meadow_page.click_book_this_room_button()
-        shady_meadow_page.get_to_contact_block_submit_button()
+        shady_meadow_page.go_to_contact_block_submit_button()
         contact_block_name_field = shady_meadow_page.get_contact_block_name_field()
         assert contact_block_name_field.is_displayed(), f"Contact_block_name_field is not displayed"
         contact_block_email_field = shady_meadow_page.get_contact_block_email_field()
