@@ -36,6 +36,7 @@ jobs:
           source ./my_venv/bin/activate
           pip install -r requirements.txt
 
+
       - name: Prepare Allure history # Step to prepare Allure history directory
         run: |
           cd ..
