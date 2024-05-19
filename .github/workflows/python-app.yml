@@ -27,7 +27,7 @@ jobs:
       - name: Install Python 3 # Step to install Python 3
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10 # Set the Python version to install
+          python-version: 3.12 # Set the Python version to install
 
       - name: Install dependencies # Step to install project dependencies
         run: |
