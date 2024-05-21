@@ -21,9 +21,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Prepare firefox 
-      uses: browser-actions/setup-firefox@latest
+      uses: browser-actions/setup-chrome@latest
 
-    - name: Firefox version 
+    - name: Chrome version 
       run: firefox --version 
     
     - name: Set up Python ${{ matrix.python-version }}
