@@ -20,6 +20,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Prepare firefox 
+    - uses: browser-actions/setup-firefox@latest
+
+    - name: Firefox version 
+    - run: firefox --version 
+    
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
