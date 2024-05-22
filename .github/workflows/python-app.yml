@@ -15,10 +15,10 @@ jobs:
   generate-allure-report:
     runs-on: ubuntu-latest 
 
-    defaults:
-      run:
-        shell: bash # Set the shell for the job
-        working-directory: ./test # Set the working directory for the job
+    # defaults:
+    #   run:
+    #     shell: bash # Set the shell for the job
+    #     working-directory: ./test # Set the working directory for the job
 
     steps:
       - name: Checkout repo
