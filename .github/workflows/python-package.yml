@@ -21,7 +21,7 @@ jobs:
     - run: chrome --version
     
     - name: Set up Python 
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: "3.11"
     - name: Install dependencies
@@ -36,4 +36,10 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
-      run: pytest --github-report tests
+      run: pytest 
+    - uses: dariocurr/pytest-summary@main
+      with:
+        output: test-summary.md
+        paths: tests/**.py
+      if: always()
+      
