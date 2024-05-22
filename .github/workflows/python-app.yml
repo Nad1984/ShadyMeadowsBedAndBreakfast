@@ -29,7 +29,7 @@ jobs:
       - name: Install Python 
         uses: actions/setup-python@v5
         with:
-          python-version: 3.12 
+          python-version: 3.11 
 
       - name: Install dependencies
         run: |
@@ -50,64 +50,43 @@ jobs:
       #     source ./my_venv/bin/activate
       #     pip install -r requirements.txt
 
-
-      # - name: Prepare Allure history # Step to prepare Allure history directory
-      #   run: |
-      #     cd ..
-      #     mkdir -p ${{ vars.ALLURE_RESULTS_PATH }}
+      - run: mkdir -p ./results
+      - run: echo hello > ./results/report.html
 
       - name: Test with pytest
         run: |
-          python -m pytest 
+          pytest --html=results/report.html --self-contained-html
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: report
+          path: ./results/report.html
           
-      # -v --gherkin-terminal-reporter -s --tags="${{ github.event.inputs.tags }}" --color=yes --alluredir=../${{ vars.ALLURE_RESULTS_PATH }}
+
 
      
-      - name: Load test report history
-        uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
-        with:
-          ref: ShadyMeadowsBedAndBreakfast
-          path: ShadyMeadowsBedAndBreakfast
+      # - name: Load test report history
+      #   uses: actions/checkout@v4
+      #   if: always()
+      #   continue-on-error: true
+      #   with:
+      #     ref: ShadyMeadowsBedAndBreakfast
+      #     path: ShadyMeadowsBedAndBreakfast
 
-      - name: Build test report
-        uses: simple-elf/allure-report-action@v1.7
-        if: always()
-        with:
-          github_repo: ShadyMeadowsBedAndBreakfast
-          allure_history: allure-history
-          allure_results: build/allure-results
+      # - name: Build test report
+      #   uses: simple-elf/allure-report-action@v1.7
+      #   if: always()
+      #   with:
+      #     github_repo: ShadyMeadowsBedAndBreakfast
+      #     allure_history: allure-history
+      #     allure_results: build/allure-results
 
-      - name: Publish test report
-        uses: peaceiris/actions-gh-pages@v4
-        if: always()
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: ShadyMeadowsBedAndBreakfast
-          publish_dir: allure-history
+      # - name: Publish test report
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   if: always()
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_branch: ShadyMeadowsBedAndBreakfast
+      #     publish_dir: allure-history
       
-      # - name: Get Allure history
-      #   # Step to retrieve Allure history
-      #   uses: actions/checkout@v3
-      #   if: always() # Execute even if previous steps fail
-      #   continue-on-error: true # Continue execution even if the step fails
-      #   with:
-      #     ref: gh-pages # Specify the branch to retrieve Allure history from
-      #     path: gh-pages # Set the destination path for Allure history
 
-      # - name: Allure report action # Step to generate Allure report
-      #   uses: simple-elf/allure-report-action@master
-      #   if: always() # Execute even if previous steps fail
-      #   with:
-      #     allure_results: ${{ vars.ALLURE_RESULTS_PATH }} # Specify the directory containing Allure results
-      #     allure_history: allure-history # Specify the directory to store Allure history
-      #     keep_reports: 5 # Specify the number of previous reports to keep
-
-      # - name: Deploy Allure report to GitHub Pages # Step to deploy Allure report to GitHub Pages
-      #   if: always() # Execute even if previous steps fail
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }} # Provide the GitHub token for authentication
-      #     publish_branch: gh-pages # Specify the branch to publish the report to
-      #     publish_dir: allure-history # Specify the directory containing the report
