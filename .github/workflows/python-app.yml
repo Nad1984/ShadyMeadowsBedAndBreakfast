@@ -63,7 +63,7 @@ jobs:
         uses: simple-elf/allure-report-action@v1.7
         if: always()
         with:
-          ShadyMeadowsBedAndBreakfast: ShadyMeadowsBedAndBreakfast
+          github_repo: ShadyMeadowsBedAndBreakfast
           allure_history: allure-history
           allure_results: build/allure-results
 
