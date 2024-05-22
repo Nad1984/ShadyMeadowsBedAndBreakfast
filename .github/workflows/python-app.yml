@@ -50,17 +50,17 @@ jobs:
       #     source ./my_venv/bin/activate
       #     pip install -r requirements.txt
 
-      - run: mkdir -p ./results
-      - run: echo hello > ./results/report.html
+      - run: mkdir -p /home/runner/work/ShadyMeadowsBedAndBreakfast/ShadyMeadowsBedAndBreakfast/results
+      - run: echo hello > /home/runner/work/ShadyMeadowsBedAndBreakfast/ShadyMeadowsBedAndBreakfast/results/report.html
 
       - name: Test with pytest
         run: |
-          pytest --html=results/report.html --self-contained-html
+          pytest --html=/home/runner/work/ShadyMeadowsBedAndBreakfast/ShadyMeadowsBedAndBreakfast/results/report.html --self-contained-html
 
       - uses: actions/upload-artifact@v4
         with:
           name: report
-          path: ./results/report.html
+          path: /home/runner/work/ShadyMeadowsBedAndBreakfast/ShadyMeadowsBedAndBreakfast/results/report.html
           
 
 
