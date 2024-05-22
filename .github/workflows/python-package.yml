@@ -37,4 +37,11 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest
+        pytest --html=report.html --self-contained-html
+    
+    - name: Surface failing tests
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        path: report.html
+
